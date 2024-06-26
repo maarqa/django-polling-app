@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block body_block %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Home Page</title>
+</head>
+<body>
+    <h1>Want to Vote too?</h1>
+    <h4>Just Click Below to See all Questions for voting</h4>
+    <button type="button" class="btn btn-primary"><a href="{%url 'polls:Polls' %}">Click Here</a></button>
+</body>
+</html>
+{% endblock%}

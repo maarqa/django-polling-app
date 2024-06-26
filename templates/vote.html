@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block body_block %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Vote Here</title>
+</head>
+<body>
+    <h2>Vote Now</h2>
+    {%if poller %}
+    <h2>{{poller.question_text}}</h2>
+    
+   
+    <form method="post">
+    {% csrf_token %}
+    {% for choice in choices %}
+    <div class="form-check">
+        <input type="radio" name="choice" class="form-check-input" id="choice{{ forloop.counter }}"
+            value="{{ choice.id }}" />
+        <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label>
+    </div>
+    {% endfor %}
+    <input type="submit" value="Vote" class="btn btn-success btn-lg btn-block mt-4" />
+</form>
+    
+    <button type="button" class="btn btn-outline-primary"><a href="{%url 'polls:result' question_id=poller.id %}">See Results</a></button>
+    <button type="button" class="btn btn-outline-primary"><a href="{%url 'polls:Polls' %}">Choose Another Question</a></button>
+     {%endif%}
+</body>
+</html>
+{% endblock%}

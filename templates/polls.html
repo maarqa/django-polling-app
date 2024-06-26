@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block body_block %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" >
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Voting Site</title>
+</head>
+<body>
+    <h1>All Available Question For Voting are below:</h1>
+    {%if poller %}
+    {% for p in poller %}
+       
+      <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{ p.question_text }}</h5>
+
+    <a href="{%url 'polls:details' question_id=p.id %}" class="card-link">Vote Now</a>
+
+  </div>
+</div>
+    {% endfor %}
+    {%endif%}
+</body>
+</html>
+{% endblock%}
